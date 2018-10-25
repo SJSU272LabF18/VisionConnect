@@ -21,9 +21,7 @@ This project aims to help the visually impaired people to be a part of growing w
 We are planning to make the application for them where use of the keyboard completely eliminated, and the user will have to respond through voice and mouse click only. It will take the user actions based on the click whether its left click or right click. We will provide the option like if user left click, can compose the mail or if right click can send the mails, double click goes to inbox.
 We will be using IBM Watson speech to text and simple web application to achieve this.
 
-3. The Secret
 
-A device that would monitor everything a person says and based on our machine learning algorithm provide a log at the end of the day about the words that were said which helps us implement the law of attraction and the words which don’t. And help a person become more positive.
 
 
 
