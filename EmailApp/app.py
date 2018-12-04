@@ -137,7 +137,7 @@ def showEmailLogic(req):
 
 
 def email_message(receiver,message):
-    sg = sendgrid.SendGridAPIClient(apikey='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')
+    sg = sendgrid.SendGridAPIClient(apikey='')
     from_email = Email("myemailapp@myemailapp.com")
     to_email = Email(receiver)
     subject = "Message from My Email App"
