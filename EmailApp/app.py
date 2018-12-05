@@ -41,25 +41,26 @@ def webhook():
     return jsonify({"fulfillmentText": s,})
     # return jsonify({"fulfillmentMessages": res["fulfillmentMessages"], })
 
-
 def makeWebhookResult(req):
-    if req.get("queryResult").get("intent").get("displayName") == "EmailIntent":
+    if (req.get("queryResult").get("intent").get("displayName") == "EmailIntent" or
+         req.get("queryResult").get("intent").get("displayName") == "ReplyEmailIntent"):
         response = sendEmailLogic(req)
-    elif(req.get("queryResult").get("intent").get("displayName") == "EmailIntent - yes" or req.get("queryResult").get("intent").get("displayName") == "ShowEmailIntent"):
+    elif(req.get("queryResult").get("intent").get("displayName") == "EmailIntent - yes" or
+         req.get("queryResult").get("intent").get("displayName") == "ShowEmailIntent"):
         print("inside showemailintent")
         response = showEmailLogic(req)
+    elif(req.get("queryResult").get("intent").get("displayName") == "ShowImportantEmails"):
+        response = showImportantEmails(req)
     # elif(req.get("expectedInputs").get("possibleIntents").get("intent") == )
     # print(req.get("expectedInputs").get("possibleIntents").get("intent"))
     return response
-
 
 def sendEmailLogic(req):
     result = req.get("queryResult")
     parameters = result.get("parameters")
     receiver = parameters.get("receiver")
     message = parameters.get("message")
-    print("Hi")
-    # cost = {'Europe':100, 'North America':200, 'South America':300, 'Asia':400, 'Africa':500}
+    is_important = parameters.get("isimportant")
 
     speech = "Hello!"
 
@@ -67,7 +68,8 @@ def sendEmailLogic(req):
     ref.push({
         u'message_text': message,
         u'receiverEmail': receiver,
-        u'senderEmail': ref.get()['LoggedInUser']
+        u'senderEmail': ref.get()['LoggedInUser'],
+        u'is_important': is_important
     })
     # snapshot = ref.order_by_key().get()
     # for key, val in snapshot.items():
@@ -148,6 +150,29 @@ def email_message(receiver,message):
     print(response.body)
     print(response.headers)
 
+def showImportantEmails(req):
+    docs = ref.get()
+    fumfillmenttext = "You marked these emails as important\n\n"
+    count = 0
+
+    snapshot = ref.order_by_key().get()
+    for key, val in snapshot.items():
+        print(val)
+        # print(val['receiverEmail'])
+        if not isinstance(val, str):
+            if val['senderEmail'] == ref.get()['LoggedInUser'] and val['is_important'] == True:
+                fumfillmenttext += "Email saying " + val['message_text'] + " sent to " + val['receiverEmail'] + "\n"
+
+    if fumfillmenttext == "":
+        fumfillmenttext = "You currently do not have any important emails\n"
+
+    r = {
+         "fulfillmentText": fumfillmenttext,
+          "data": {},
+          "contextOut": [],
+          "source": "apiai-onlinestore-shipping"
+    }
+    return r
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))
