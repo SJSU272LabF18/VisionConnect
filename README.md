@@ -9,7 +9,7 @@
 
 
 
- Voice based email for visually challenged people  - APPROVED
+ Vision Connect - Voice based assistant for visually challenged people  - APPROVED
 comment: integrate with google home 
 
 This project aims to help the visually impaired people to be a part of growing world by using internet and also aims to make life of such people quite easy. 
