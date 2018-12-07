@@ -1,10 +1,10 @@
 # Project-Team-28
                      CMPE 272 Project Proposals          
                        Presented by -
-                             Neha Sharma
-                             Sarang Grover 
-                             Maahi Chatterjee
-                             Janhavi Dahihande
+                             Neha Sharma - 013764816
+                             Sarang Grover - 013726102
+                             Maahi Chatterjee - 013721552
+                             Janhavi Dahihande 013732030
 
 
 
