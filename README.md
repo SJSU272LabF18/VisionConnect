@@ -1,15 +1,15 @@
 # Project-Team-28
                      CMPE 272 Project Proposals          
-                       Presented by -
+                     Presented by -
                              Neha Sharma - 013764816
                              Sarang Grover - 013726102
                              Maahi Chatterjee - 013721552
-                             Janhavi Dahihande 013732030
+                             Janhavi Dahihande - 013732030
 
 
 
 
- Vision Connect - Voice based assistant for visually challenged people  - APPROVED
+<b>Vision Connect</b> - Voice based assistant for visually challenged people  - APPROVED
 comment: integrate with google home 
 
 This project aims to help the visually impaired people to be a part of growing world by using internet and also aims to make life of such people quite easy. 
